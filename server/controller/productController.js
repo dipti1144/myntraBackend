@@ -4,7 +4,7 @@ const ApiFeatures = require("../utils/apifeature");
 const product=require("../db.json");
 
 // {====================Create-Product========= ADMIN  ++++=================}
-exports.createProduct = catchAsyncErrors(async (req, res, next) => {
+exports.createProduct = catchAsyncErrors(async (req, res) => {
     
     const product = await Product.create(req.body);
     res.status(201).json({
@@ -40,3 +40,10 @@ exports.getAllProducts = catchAsyncErrors(async (req, res) => {
 //     .then((docs) => console.log(docs))
 //     .catch((err) => console.log(err))
 
+exports.getSingleProduct=catchAsyncErrors(async(req,res)=>{
+   const product=await Product.findById(req.params.id);
+   res.status(201).json({
+    success: true,
+    product,
+  });
+});
