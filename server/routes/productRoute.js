@@ -8,6 +8,6 @@ productRoute.post("/create",requireSignIn, isAdmin,createProduct)
 
 productRoute.get("/getproducts",getAllProducts)
 
-productRoute.get("/getproduct/:id",getSingleProduct)
+productRoute.get("/getproducts/:id",getSingleProduct)
 
 module.exports=productRoute;
