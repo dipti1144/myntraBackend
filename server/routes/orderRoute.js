@@ -9,7 +9,7 @@ const { requireSignIn, isAdmin } = require("../middleware/authMiddleware");
 
 const orderRoute = express.Router();
 
-orderRoute.post("/order/new", requireSignIn, newOrder);
-orderRoute.get("/orders/me", requireSignIn, myOrders);
-orderRoute.get("/order/:id", requireSignIn, getSingleOrder);
+orderRoute.post("/new", requireSignIn, newOrder);
+orderRoute.get("/me", requireSignIn, myOrders);
+orderRoute.get("/:id", requireSignIn, isAdmin, getSingleOrder);
 module.exports = orderRoute;

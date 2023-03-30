@@ -1,12 +1,12 @@
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
-const Order = require("../models/orderModel");
+const Order = require("../model/orderModel");
 const ErrorHandler = require("../utils/errorhandler");
 const Product=require("../model/productModel")
 
 exports.newOrder = catchAsyncErrors(async (req, res, next) => {
   const { shippingInfo, orderItems } = req.body;
 
-  const order = await orderModel.create({
+  const order = await Order.create({
     shippingInfo,
     orderItems,
 
