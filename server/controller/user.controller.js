@@ -4,6 +4,8 @@ const JWT=require("jsonwebtoken");
 const User=require("../model/user.model");
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+
+// {===========================Registration==============================}
 exports.registerUser=async(req,res)=>{
     try {
         const { name, email, password, gender, number } = req.body;
@@ -59,6 +61,7 @@ exports.registerUser=async(req,res)=>{
       }
 }
 
+// {===========================login==============================}
 exports.loginUser=async(req,res)=>{
     try {
         const { email, password } = req.body;
@@ -121,7 +124,7 @@ exports.getAllUser = catchAsyncErrors(async (req, res, next) => {
     users,
   });
 });
-//{===================== Get single user (admin)=====================}
+// {===================== Get single user (admin)=====================}
 exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.params.id);
 
@@ -137,7 +140,7 @@ exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// // {==========================Delete User --Admin=========================}
+// // // {==========================Delete User --Admin=========================}
 exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findByIdAndDelete(req.params.id);
 

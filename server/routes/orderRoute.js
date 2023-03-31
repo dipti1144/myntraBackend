@@ -10,6 +10,6 @@ const {
 const orderRoute = express.Router();
 
 orderRoute.post("/new",  newOrder);
-orderRoute.get("/me", myOrders);
+orderRoute.get("/me" ,myOrders);
 orderRoute.get("/:id", getSingleOrder);
 module.exports = orderRoute;
