@@ -5,11 +5,11 @@ const {
   getSingleOrder,
 } = require("../controller/orderController");
 
-const { requireSignIn, isAdmin } = require("../middleware/authMiddleware");
+
 
 const orderRoute = express.Router();
 
-orderRoute.post("/new", requireSignIn, newOrder);
-orderRoute.get("/me", requireSignIn, myOrders);
-orderRoute.get("/:id", requireSignIn, isAdmin, getSingleOrder);
+orderRoute.post("/new",  newOrder);
+orderRoute.get("/me", myOrders);
+orderRoute.get("/:id", getSingleOrder);
 module.exports = orderRoute;
