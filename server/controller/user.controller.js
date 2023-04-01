@@ -4,10 +4,11 @@ const JWT=require("jsonwebtoken");
 const User=require("../model/user.model");
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+ 
 
 // {===========================Registration==============================}
 exports.registerUser=async(req,res)=>{
-    try {
+      try{
         const { name, email, password, gender, number } = req.body;
         //validations
         if (!name) {
@@ -38,13 +39,13 @@ exports.registerUser=async(req,res)=>{
         //register user
         const hashedPassword = await hashPassword(password);
         //save
-        const user = await new User({
+        const user = await User.create({
           name,
           email,
           gender,
           number,
           password: hashedPassword,
-        }).save();
+        });
     
         res.status(201).send({
           success: true,
@@ -59,6 +60,7 @@ exports.registerUser=async(req,res)=>{
           error,
         });
       }
+      
 }
 
 // {===========================login==============================}

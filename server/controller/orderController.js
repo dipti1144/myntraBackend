@@ -4,11 +4,11 @@ const ErrorHandler = require("../utils/errorhandler");
 const Product=require("../model/productModel")
 
 exports.newOrder = catchAsyncErrors(async (req, res, next) => {
-  const { shippingInfo, orderItems } = req.body;
+  const { shippingInfo, cartItems } = req.body;
 
   const order = await Order.create({
     shippingInfo,
-    orderItems,
+    cartItems,
 
     user: req.user._id,
   });
@@ -37,7 +37,7 @@ exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {
 
   // {======================get logged in user  Orders==================================}
 exports.myOrders = catchAsyncErrors(async (req, res, next) => {
-    const orders = await Order.find({ user: req.users._id });
+    const orders = await Order.find({ user: req.user._id });
   
     res.status(200).json({
       success: true,
