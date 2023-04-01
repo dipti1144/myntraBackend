@@ -44,4 +44,19 @@ exports.myOrders = catchAsyncErrors(async (req, res, next) => {
       orders,
     });
   });
+
+// {========================delete Order=======================================}
+exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
+  const order = await Order.findByIdAndDelete(req.params.id);
+
+  if (!order) {
+    return next(new ErrorHandler("Order not found with this Id", 404));
+  }
+
+  
+
+  res.status(200).json({
+    success: true,
+  });
+});  
   
