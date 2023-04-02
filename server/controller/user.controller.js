@@ -85,7 +85,7 @@ exports.loginUser=async(req,res)=>{
         }
         const match = await comparePassword(password, user.password);
         if (!match) {
-          return res.status(200).send({
+          return res.status(400).send({
             success: false,
             message: "Invalid Password",
           });
