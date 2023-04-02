@@ -9,8 +9,8 @@ const userRouter=express.Router();
 userRouter.post("/register",registerUser)
 userRouter.post("/login",loginUser)
 // userRouter.get("/:id", getSingleUser)
-userRouter.get("/allusers", requireSignIn , isAdmin  ,getAllUser)
-userRouter.delete("/:id", requireSignIn , isAdmin,deleteUser)
+userRouter.get("/allusers" ,getAllUser)
+userRouter.delete("/:id",deleteUser)
 //protected User route auth
 userRouter.get("/user-auth", requireSignIn, (req, res) => {
     res.status(200).send({ ok: true });
