@@ -6,12 +6,13 @@ const orderRoute = require("./routes/orderRoute");
 const productRoute = require("./routes/productRoute");
 const userRouter = require("./routes/user.route");
 const cookieParser = require("cookie-parser");
+const cors=require("cors");
 const app=express();
 require("dotenv").config();
 app.use(express.json())
 const port= process.env.PORT
 app.use(cookieParser());
-// app.use(cors());
+app.use(cors());
 
 
 app.get("/",(req,res)=>{
