@@ -4,10 +4,10 @@ const ErrorHandler = require("../utils/errorhandler");
 const Product=require("../model/productModel")
 
 exports.newOrder = catchAsyncErrors(async (req, res, next) => {
-  const { shippingInfo, cartItems } = req.body;
+  const {  cartItems } = req.body;
 
   const order = await Order.create({
-    shippingInfo,
+    
     cartItems,
 
     user: req.user._id,
